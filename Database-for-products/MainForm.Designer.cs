@@ -32,7 +32,11 @@
             this.btnLoadDataToDGW1 = new System.Windows.Forms.Button();
             this.btnSelectFileToImport = new System.Windows.Forms.Button();
             this.btGoToDeleteFrame = new System.Windows.Forms.Button();
+            this.btnLoadMaterials = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnGoToMaterialFrame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -42,7 +46,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(491, 342);
+            this.dataGridView1.Size = new System.Drawing.Size(491, 517);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnLoadDataToDGW1
@@ -75,11 +79,44 @@
             this.btGoToDeleteFrame.UseVisualStyleBackColor = true;
             this.btGoToDeleteFrame.Click += new System.EventHandler(this.btGoToDeleteFrame_Click);
             // 
+            // btnLoadMaterials
+            // 
+            this.btnLoadMaterials.Location = new System.Drawing.Point(672, 94);
+            this.btnLoadMaterials.Name = "btnLoadMaterials";
+            this.btnLoadMaterials.Size = new System.Drawing.Size(116, 64);
+            this.btnLoadMaterials.TabIndex = 4;
+            this.btnLoadMaterials.Text = "Загрузить материалы";
+            this.btnLoadMaterials.UseVisualStyleBackColor = true;
+            this.btnLoadMaterials.Click += new System.EventHandler(this.btnLoadMaterials_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(536, 187);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(832, 342);
+            this.dataGridView2.TabIndex = 5;
+            // 
+            // btnGoToMaterialFrame
+            // 
+            this.btnGoToMaterialFrame.Location = new System.Drawing.Point(804, 12);
+            this.btnGoToMaterialFrame.Name = "btnGoToMaterialFrame";
+            this.btnGoToMaterialFrame.Size = new System.Drawing.Size(116, 55);
+            this.btnGoToMaterialFrame.TabIndex = 6;
+            this.btnGoToMaterialFrame.Text = "Таблица материалов";
+            this.btnGoToMaterialFrame.UseVisualStyleBackColor = true;
+            this.btnGoToMaterialFrame.Click += new System.EventHandler(this.btnGoToMaterialFrame_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1380, 577);
+            this.Controls.Add(this.btnGoToMaterialFrame);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.btnLoadMaterials);
             this.Controls.Add(this.btGoToDeleteFrame);
             this.Controls.Add(this.btnSelectFileToImport);
             this.Controls.Add(this.btnLoadDataToDGW1);
@@ -87,6 +124,7 @@
             this.Name = "MainForm";
             this.Text = "Insert data";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -97,6 +135,9 @@
         private System.Windows.Forms.Button btnLoadDataToDGW1;
         private System.Windows.Forms.Button btnSelectFileToImport;
         private System.Windows.Forms.Button btGoToDeleteFrame;
+        private System.Windows.Forms.Button btnLoadMaterials;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnGoToMaterialFrame;
     }
 }
 

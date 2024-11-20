@@ -42,7 +42,7 @@ namespace Database_for_products
                     connection.Open();
 
                     //запрос для удаления строки из БД
-                    string query = "DELETE FROM detail_assembly_unit WHERE nam  e = ANY (@name)";
+                    string query = "DELETE FROM detail_assembly_unit WHERE name = ANY (@name)";
 
                     using (var command = new NpgsqlCommand(query,connection))
                     {

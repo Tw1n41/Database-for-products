@@ -25,6 +25,9 @@ namespace Database_for_products
             string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Own3(rR;Database=products";
             connection = new NpgsqlConnection(connectionString);
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+            //обработчик выделения
+            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
         }
 
         private void ConnectToDatabase()
@@ -53,12 +56,6 @@ namespace Database_for_products
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];//первый лист
 
-                //Заполнение DataTable заголовками
-                //for (int columns = 1; columns <= worksheet.Dimension.End.Column; columns++)
-                //{
-                //    dataTable.Columns.Add(worksheet.Cells[1, columns].Text);
-                //}
-
                 int columnCount = worksheet.Dimension.End.Column;
 
                 // Добавление столбцов в DataTable
@@ -85,14 +82,6 @@ namespace Database_for_products
         {
             using (StreamWriter writer = new StreamWriter(csvFilePath))
             {
-                // Запись заголовков
-                //for (int i = 1; i < dataTable.Columns.Count; i++)
-                //{
-                //    writer.Write(dataTable.Columns[i]);
-                //    if (i < dataTable.Columns.Count - 1)
-                //        writer.Write(",");
-                //}
-                //writer.WriteLine();
 
                 // Запись данных
                 foreach (DataRow row in dataTable.Rows)
@@ -166,6 +155,47 @@ namespace Database_for_products
             LoadToDataGridView();
         }
 
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
+
+                LoadDataGridView2(ID);
+            }
+        }
+
+        private void LoadDataGridView2(int ID)
+        {
+            try
+            {
+                connection.Open();
+
+                var query = "SELECT assembly_unit_id, assembly_unit_name, component_type, component_code, " +
+                    "component_name, quantity, unit_of_measurement " +
+                    "FROM composion " +
+                    "WHERE assembly_unit_id = @id";
+                var adapter = new Npgsql.NpgsqlDataAdapter(query, connection);
+
+                //parameter
+                adapter.SelectCommand.Parameters.AddWithValue("@id", ID);
+
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                dataGridView2.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         private void btnSelectFileToImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -183,7 +213,7 @@ namespace Database_for_products
 
                 // Сохранение DataTable в CSV файл
                 string csvFilePath = "C:\\BD_Project\\dse_xlsx\\data.csv";
-                SaveDataTableToCSV(dataTable, csvFilePath); 
+                SaveDataTableToCSV(dataTable, csvFilePath);
 
                 // Импорт CSV в PostgreSQL
                 ImportDataToDB(csvFilePath);
@@ -195,6 +225,46 @@ namespace Database_for_products
             DeleteForm delform = new DeleteForm();
             delform.Tag = this;
             delform.Show(this);
+            Hide();
+        }
+
+        //загрузка данных в таблицу на экране
+        private void LoadToDataGridViewWithMaterial()
+        {
+            try
+            {
+                connection.Open();
+                //Работа с БД
+                string query = "SELECT * FROM composion";
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+                //DataAdapter для загрузки данных в DT
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
+                DataTable dataTableWithComponent = new DataTable();
+                adapter.Fill(dataTableWithComponent);
+                //привязка данных к элементам формы DataGridView
+                dataGridView2.DataSource = dataTableWithComponent;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при получении данных: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        //создать 2 кнопку выгрузки
+        private void btnLoadMaterials_Click(object sender, EventArgs e)
+        {
+            LoadToDataGridViewWithMaterial();
+        }
+
+        private void btnGoToMaterialFrame_Click(object sender, EventArgs e)
+        {
+            MaterialForm matform = new MaterialForm();
+            matform.Tag = this;
+            matform.Show(this);
             Hide();
         }
     }
