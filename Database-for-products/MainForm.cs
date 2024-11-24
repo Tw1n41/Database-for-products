@@ -36,7 +36,6 @@ namespace Database_for_products
             {
                 connection.Open();
                 MessageBox.Show("Подключение к базе данных выполнено!");
-                //здесь выполняются SQL-запросы к БД
             }
             catch (Exception ex)
             {
@@ -153,6 +152,7 @@ namespace Database_for_products
         private void btnLoadDataToDGW1_Click(object sender, EventArgs e)
         {
             LoadToDataGridView();
+            dataGridView1.Sort(dataGridView1.Columns["id"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
 
@@ -258,6 +258,7 @@ namespace Database_for_products
         private void btnLoadMaterials_Click(object sender, EventArgs e)
         {
             LoadToDataGridViewWithMaterial();
+            dataGridView2.Sort(dataGridView2.Columns["assembly_unit_id"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
         private void btnGoToMaterialFrame_Click(object sender, EventArgs e)
@@ -266,6 +267,105 @@ namespace Database_for_products
             matform.Tag = this;
             matform.Show(this);
             Hide();
+        }
+
+        private void btnGoToInsertData_Click(object sender, EventArgs e)
+        {
+            InsertDataForm dataForm = new InsertDataForm();
+            dataForm.Tag = this;
+            dataForm.Show(this);
+            Hide();
+        }
+
+        public void ExportDataToExcel(string query, string filePath)
+        {
+            try
+            {
+                connection.Open();
+
+                DataTable dataTable = new DataTable();
+
+                using(var command = new NpgsqlCommand(query, connection))
+                {
+                    using (var adapter = new NpgsqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("ExportedData");
+
+                    //запись заголовков столбцов
+                    for (int col = 0; col < dataTable.Columns.Count; col++)
+                    {
+                        worksheet.Cells[1, col + 1].Value = dataTable.Columns[col].ColumnName;
+                    }
+
+                    //запись строк
+                    for (int row =0;row < dataTable.Rows.Count; row++)
+                    {
+                        for (int col = 0;col < dataTable.Columns.Count; col++)
+                        {
+                            worksheet.Cells[row + 2, col + 1].Value = dataTable.Rows[row][col];
+                        }
+                    }
+
+                    //само сохранение файла
+                    FileInfo excelFile = new FileInfo(filePath);
+                    package.SaveAs(excelFile);
+                }
+                
+                MessageBox.Show("Данные успешно экспортированы в Excel!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при экспорте: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void btnExportData_Click(object sender, EventArgs e)
+        {
+            //запрос для экспорта
+            string query = "SELECT * FROM detail_assembly_unit";
+
+            //путь для сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel Files|*.xlsx",
+                Title = "Сохранить как Excel файл"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                ExportDataToExcel(query, filePath);
+            }
+        }
+
+        private void btnSaveDataWithMaterials_Click(object sender, EventArgs e)
+        {
+            //запрос для экспорта
+            string query = "SELECT * FROM composion";
+
+            //путь для сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel Files|*.xlsx",
+                Title = "Сохранить как Excel файл"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                ExportDataToExcel(query, filePath);
+            }
         }
     }
 }
