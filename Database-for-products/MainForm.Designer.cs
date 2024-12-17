@@ -45,20 +45,22 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 10);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(368, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(491, 517);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnLoadDataToDGW1
             // 
-            this.btnLoadDataToDGW1.Location = new System.Drawing.Point(388, 10);
-            this.btnLoadDataToDGW1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLoadDataToDGW1.Location = new System.Drawing.Point(509, 99);
+            this.btnLoadDataToDGW1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoadDataToDGW1.Name = "btnLoadDataToDGW1";
-            this.btnLoadDataToDGW1.Size = new System.Drawing.Size(87, 45);
+            this.btnLoadDataToDGW1.Size = new System.Drawing.Size(116, 55);
             this.btnLoadDataToDGW1.TabIndex = 1;
             this.btnLoadDataToDGW1.Text = "Загрузить данные";
             this.btnLoadDataToDGW1.UseVisualStyleBackColor = true;
@@ -66,10 +68,10 @@
             // 
             // btnSelectFileToImport
             // 
-            this.btnSelectFileToImport.Location = new System.Drawing.Point(388, 76);
-            this.btnSelectFileToImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelectFileToImport.Location = new System.Drawing.Point(509, 14);
+            this.btnSelectFileToImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSelectFileToImport.Name = "btnSelectFileToImport";
-            this.btnSelectFileToImport.Size = new System.Drawing.Size(87, 52);
+            this.btnSelectFileToImport.Size = new System.Drawing.Size(116, 64);
             this.btnSelectFileToImport.TabIndex = 2;
             this.btnSelectFileToImport.Text = "Выбрать файл для загрузки";
             this.btnSelectFileToImport.UseVisualStyleBackColor = true;
@@ -77,10 +79,10 @@
             // 
             // btGoToDeleteFrame
             // 
-            this.btGoToDeleteFrame.Location = new System.Drawing.Point(504, 10);
-            this.btGoToDeleteFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btGoToDeleteFrame.Location = new System.Drawing.Point(1243, 11);
+            this.btGoToDeleteFrame.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btGoToDeleteFrame.Name = "btGoToDeleteFrame";
-            this.btGoToDeleteFrame.Size = new System.Drawing.Size(87, 45);
+            this.btGoToDeleteFrame.Size = new System.Drawing.Size(116, 55);
             this.btGoToDeleteFrame.TabIndex = 3;
             this.btGoToDeleteFrame.Text = "Удалить данные";
             this.btGoToDeleteFrame.UseVisualStyleBackColor = true;
@@ -88,10 +90,10 @@
             // 
             // btnLoadMaterials
             // 
-            this.btnLoadMaterials.Location = new System.Drawing.Point(504, 76);
-            this.btnLoadMaterials.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLoadMaterials.Location = new System.Drawing.Point(665, 14);
+            this.btnLoadMaterials.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoadMaterials.Name = "btnLoadMaterials";
-            this.btnLoadMaterials.Size = new System.Drawing.Size(87, 52);
+            this.btnLoadMaterials.Size = new System.Drawing.Size(116, 64);
             this.btnLoadMaterials.TabIndex = 4;
             this.btnLoadMaterials.Text = "Загрузить материалы";
             this.btnLoadMaterials.UseVisualStyleBackColor = true;
@@ -100,20 +102,21 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(402, 152);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Location = new System.Drawing.Point(536, 187);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(624, 278);
+            this.dataGridView2.Size = new System.Drawing.Size(832, 342);
             this.dataGridView2.TabIndex = 5;
             // 
             // btnGoToMaterialFrame
             // 
-            this.btnGoToMaterialFrame.Location = new System.Drawing.Point(603, 10);
-            this.btnGoToMaterialFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGoToMaterialFrame.Location = new System.Drawing.Point(665, 106);
+            this.btnGoToMaterialFrame.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGoToMaterialFrame.Name = "btnGoToMaterialFrame";
-            this.btnGoToMaterialFrame.Size = new System.Drawing.Size(87, 45);
+            this.btnGoToMaterialFrame.Size = new System.Drawing.Size(116, 55);
             this.btnGoToMaterialFrame.TabIndex = 6;
             this.btnGoToMaterialFrame.Text = "Таблица материалов";
             this.btnGoToMaterialFrame.UseVisualStyleBackColor = true;
@@ -121,10 +124,10 @@
             // 
             // btnGoToInsertData
             // 
-            this.btnGoToInsertData.Location = new System.Drawing.Point(603, 76);
-            this.btnGoToInsertData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGoToInsertData.Location = new System.Drawing.Point(800, 19);
+            this.btnGoToInsertData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGoToInsertData.Name = "btnGoToInsertData";
-            this.btnGoToInsertData.Size = new System.Drawing.Size(87, 45);
+            this.btnGoToInsertData.Size = new System.Drawing.Size(116, 55);
             this.btnGoToInsertData.TabIndex = 7;
             this.btnGoToInsertData.Text = "Ввод данных";
             this.btnGoToInsertData.UseVisualStyleBackColor = true;
@@ -132,10 +135,10 @@
             // 
             // btnExportData
             // 
-            this.btnExportData.Location = new System.Drawing.Point(705, 11);
-            this.btnExportData.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExportData.Location = new System.Drawing.Point(940, 14);
+            this.btnExportData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportData.Name = "btnExportData";
-            this.btnExportData.Size = new System.Drawing.Size(87, 45);
+            this.btnExportData.Size = new System.Drawing.Size(116, 55);
             this.btnExportData.TabIndex = 8;
             this.btnExportData.Text = "Сохранить в файл";
             this.btnExportData.UseVisualStyleBackColor = true;
@@ -143,10 +146,10 @@
             // 
             // btnSaveDataWithMaterials
             // 
-            this.btnSaveDataWithMaterials.Location = new System.Drawing.Point(694, 69);
-            this.btnSaveDataWithMaterials.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveDataWithMaterials.Location = new System.Drawing.Point(921, 85);
+            this.btnSaveDataWithMaterials.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveDataWithMaterials.Name = "btnSaveDataWithMaterials";
-            this.btnSaveDataWithMaterials.Size = new System.Drawing.Size(113, 79);
+            this.btnSaveDataWithMaterials.Size = new System.Drawing.Size(151, 97);
             this.btnSaveDataWithMaterials.TabIndex = 9;
             this.btnSaveDataWithMaterials.Text = "Сохранить таблицу с материалами в файл";
             this.btnSaveDataWithMaterials.UseVisualStyleBackColor = true;
@@ -154,9 +157,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 469);
+            this.ClientSize = new System.Drawing.Size(1380, 577);
             this.Controls.Add(this.btnSaveDataWithMaterials);
             this.Controls.Add(this.btnExportData);
             this.Controls.Add(this.btnGoToInsertData);
@@ -167,7 +170,7 @@
             this.Controls.Add(this.btnSelectFileToImport);
             this.Controls.Add(this.btnLoadDataToDGW1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Insert data";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
